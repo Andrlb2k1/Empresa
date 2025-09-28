@@ -37,7 +37,7 @@
                         <input type="date" class="form-control" name="data_nascimento" required>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success">
+                        <input type="submit" class="btn btn-success" value="Enviar">
                     </div>
                 </form>
             </div>
