@@ -4,9 +4,15 @@
     $pass = "PostGreen2k22.";
     $bd = "empresa";
 
-    if(mysqli_connect($server, $user, $pass, $bd)) {
+    if($conn = mysqli_connect($server, $user, $pass, $bd)) {
         // echo "Conectado!";
     } else {
         echo "Erro!";
+    }
+
+    function mensagem($texto, $tipo) {
+        echo "<div class='alert alert-$tipo' role='alert'>
+                $texto
+            </div>";
     }
 ?>
