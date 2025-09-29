@@ -42,6 +42,7 @@
                             <th scope="col">Telefone</th>
                             <th scope="col">Email</th>
                             <th scope="col">Data de Nascimento</th>
+                            <th scope="col">Funções</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,7 @@
                                 $telefone = $linha['telefone'];
                                 $email = $linha['email'];
                                 $data_nascimento = $linha['data_nascimento'];
+                                $data_nascimento = mostra_data($data_nascimento);
 
                                 echo "<tr>
                                         <th scope='row'>$nome</th>
@@ -62,6 +64,10 @@
                                         <td>$telefone</td>
                                         <td>$email</td>
                                         <td>$data_nascimento</td>
+                                        <td width=150px>
+                                            <a href='cadastro_edit.php?id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a>
+                                            <a href='#' class='btn btn-danger btn-sm'>Excluir</a>
+                                        </td>
                                     </tr>";
                             }
 
