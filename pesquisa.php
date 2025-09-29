@@ -13,6 +13,7 @@
   <body>
 
     <?php
+
         $pesquisa = $_POST['busca'] ?? '';
         
         include "conexao.php";
@@ -21,12 +22,6 @@
 
         $dados = mysqli_query($conn, $sql);
 
-        while($linha = mysqli_fetch_assoc($dados)) {
-            foreach($linha as $key => $value) {
-                echo "$key: $value<br>";
-            }
-            echo "<hr>";
-        }
     ?>
     
     <div class="container">
@@ -35,7 +30,7 @@
                 <h1>Pesquisar</h1>
                 <nav class="navbar navbar-light bg-light">
                     <form class="d-flex" role="search" action="pesquisa.php" method="POST">
-                        <input class="form-control me-2" type="search" placeholder="Nome" aria-label="Search" name="busca"/>
+                        <input class="form-control me-2" type="search" placeholder="Nome" aria-label="Search" name="busca" autofocus/>
                         <button class="btn btn-outline-success" type="submit">Pesquisar</button>
                     </form>
                 </nav>
@@ -50,13 +45,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Nome</th>
-                            <td>Rua x</td>
-                            <td>48 998087155</td>
-                            <td>fulano@gmail.com</td>
-                            <td>12/11/2001</td>
-                        </tr>
+
+                        <?php
+
+                            while($linha = mysqli_fetch_assoc($dados)) {
+                                $cod_pessoa = $linha['cod_pessoa'];
+                                $nome = $linha['nome'];
+                                $endereco = $linha['endereco'];
+                                $telefone = $linha['telefone'];
+                                $email = $linha['email'];
+                                $data_nascimento = $linha['data_nascimento'];
+
+                                echo "<tr>
+                                        <th scope='row'>$nome</th>
+                                        <td>$endereco</td>
+                                        <td>$telefone</td>
+                                        <td>$email</td>
+                                        <td>$data_nascimento</td>
+                                    </tr>";
+                            }
+
+                        ?>
+
                     </tbody>
                 </table>
                 <br>
