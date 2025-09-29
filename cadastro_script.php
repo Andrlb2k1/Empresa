@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
 
     <title>Cadastro</title>
   </head>
@@ -22,9 +23,13 @@
                 $email = $_POST['email'];
                 $data_nascimento = $_POST['data_nascimento'];
 
-                $sql = "INSERT INTO `pessoas`(`nome`, `endereco`, `telefone`, `email`, `data_nascimento`) VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento')";
+                $foto = $_FILES['foto'];
+                $nome_foto = mover_foto($foto);
+
+                $sql = "INSERT INTO `pessoas`(`nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `foto`) VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento','$nome_foto')";
 
                 if(mysqli_query($conn, $sql)) {
+                    echo "<img src='img/$nome_foto' title='$nome_foto' class='mostra_foto'>";
                     mensagem("$nome cadastrado com sucesso!", 'success');
                 } else {
                     mensagem("$nome não foi cadastrado!", 'danger');

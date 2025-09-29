@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
 
     <title>Pesquisar</title>
   </head>
@@ -37,6 +38,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">Foto</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Endereço</th>
                             <th scope="col">Telefone</th>
@@ -57,8 +59,10 @@
                                 $email = $linha['email'];
                                 $data_nascimento = $linha['data_nascimento'];
                                 $data_nascimento = mostra_data($data_nascimento);
+                                $foto = $linha['foto'];
 
                                 echo "<tr>
+                                        <th><img src='img/$foto' class='lista_foto'></th>
                                         <th scope='row'>$nome</th>
                                         <td>$endereco</td>
                                         <td>$telefone</td>

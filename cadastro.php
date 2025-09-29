@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
 
     <title>Cadastro</title>
   </head>
@@ -15,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <h1>Cadastro</h1>
-                <form action="cadastro_script.php" method="POST">
+                <form action="cadastro_script.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nome">Nome completo</label>
                         <input type="text" class="form-control" name="nome" required>
@@ -35,6 +36,10 @@
                     <div class="form-group">
                         <label for="data_nascimento">Data de Nascimento</label>
                         <input type="date" class="form-control" name="data_nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Foto</label>
+                        <input type="file" class="form-control" name="foto" required accept="image/*">
                     </div>
                     <br>
                     <div class="form-group">
