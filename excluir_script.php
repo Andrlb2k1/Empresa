@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>Alteração de Cadastro</title>
+    <title>Exclusão de Cadastro</title>
   </head>
   <body>
     <div class="container">
@@ -18,17 +18,13 @@
 
                 $id = $_POST['id'];
                 $nome = $_POST['nome'];
-                $endereco = $_POST['endereco'];
-                $telefone = $_POST['telefone'];
-                $email = $_POST['email'];
-                $data_nascimento = $_POST['data_nascimento'];
 
-                $sql = "UPDATE `pessoas` set `nome` = '$nome', `endereco` = '$endereco', `telefone` = '$telefone', `email` = '$email', `data_nascimento` = '$data_nascimento' WHERE cod_pessoa = $id";
+                $sql = "DELETE from `pessoas` WHERE cod_pessoa = $id";
 
                 if(mysqli_query($conn, $sql)) {
-                    mensagem("$nome alterado com sucesso!", 'success');
+                    mensagem("$nome excluído com sucesso!", 'success');
                 } else {
-                    mensagem("$nome não foi alterado!", 'danger');
+                    mensagem("$nome não foi excluído!", 'danger');
                 }
             ?>
             <hr>

@@ -66,13 +66,14 @@
                                         <td>$data_nascimento</td>
                                         <td width=150px>
                                             <a href='cadastro_edit.php?id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a>
-                                            <a href='#' class='btn btn-danger btn-sm'>Excluir</a>
+                                            <a href='#' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirma' onclick=" .'"' ."pegar_dados($cod_pessoa, '$nome')" .'"' .">Excluir</a>
                                         </td>
                                     </tr>";
                             }
 
                         ?>
 
+                        <!-- onclick="pegar_dados($id, '$nome')" O SEGREDO ESTÁ AQUI!!!!!!!!!-->
                     </tbody>
                 </table>
                 <br>
@@ -80,6 +81,39 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirma" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 17px"><b>Confirmação de exclusão</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background-color: white; border: none; margin-left: 240px">
+                    <span aria-hidden="true" style="font-size: 25px">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="excluir_script.php" method="POST">
+                <p>Deseja realmente excluir <b id="nome_pessoa">Nome da pessoa</b>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                <input type="hidden" name="nome" id="nome_pessoa_1" value="">
+                <input type="hidden" name="id" id="cod_pessoa" value="">
+                <input type="submit" class="btn btn-danger" value="Sim">
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function pegar_dados(id, nome) {
+            document.getElementById('nome_pessoa').innerHTML = nome;
+            document.getElementById('nome_pessoa_1').value = nome;
+            document.getElementById('cod_pessoa').value = id;
+        }
+    </script>
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
