@@ -23,23 +23,23 @@
                     </div>
                     <div class="form-group">
                         <label for="endereco">Endereço</label>
-                        <input type="text" class="form-control" name="endereco" required>
+                        <input type="text" class="form-control" name="endereco">
                     </div>
                     <div class="form-group">
                         <label for="telefone">Telefone</label>
-                        <input type="text" class="form-control" name="telefone" required>
+                        <input type="text" class="form-control" name="telefone">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" required>
+                        <input type="email" class="form-control" name="email">
                     </div>
                     <div class="form-group">
                         <label for="data_nascimento">Data de Nascimento</label>
-                        <input type="date" class="form-control" name="data_nascimento" required>
+                        <input type="date" class="form-control" name="data_nascimento">
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto</label>
-                        <input type="file" class="form-control" name="foto" required accept="image/*">
+                        <input type="file" class="form-control" name="foto" accept="image/*">
                     </div>
                     <br>
                     <div class="form-group">

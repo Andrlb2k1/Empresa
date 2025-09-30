@@ -60,9 +60,14 @@
                                 $data_nascimento = $linha['data_nascimento'];
                                 $data_nascimento = mostra_data($data_nascimento);
                                 $foto = $linha['foto'];
+                                if (!$foto == null) {
+                                    $mostra_foto = "<img src='img/$foto' class='lista_foto'>";
+                                } else {
+                                    $mostra_foto = '';
+                                }
 
                                 echo "<tr>
-                                        <th><img src='img/$foto' class='lista_foto'></th>
+                                        <th>$mostra_foto</th>
                                         <th scope='row'>$nome</th>
                                         <td>$endereco</td>
                                         <td>$telefone</td>
