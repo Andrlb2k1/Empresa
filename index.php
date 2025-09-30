@@ -6,25 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="restrito/css/bootstrap.min.css">
+    <link rel="stylesheet" href="restrito/css/estilo.css">
 
     <title>Empresa</title>
   </head>
   <body>
     <div class="container" method="POST">
         <div class="row">
-            <div class="col">
+            <div class="col-3"></div>
+            <div class="col-6">
                 <div class="jumbotron">
-                    <h1 class="display-4">Cadastro Web</h1>
-                    <p class="lead">Este é um sistema simplificado de cadastros. Base de estudos para a criação de sistemas Web com PHP e MySQL.</p>
-                    <hr class="my-4">
-                    <p>Acesse as funções.</p>
-                    <a class="btn btn-primary btn-lg" href="cadastro.php" role="button">Cadastro</a>
-                    <a class="btn btn-primary btn-lg" href="pesquisa.php" role="button">Pesquisar</a>
+                  <h1 class="display-4">Login</h1>
+                  <form action="index.php" method="POST">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Login</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" name="login">
+                      <small name="login" class="form-text text-muted">Entre com seus dados de acesso.</small>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Senha</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="senha">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Acessar</button>
+                  </form>
+                  <?php 
+                    if(isset($_POST['login'])) {
+                      $login = $_POST['login'];
+                      $senha = $_POST['senha'];
+                      if (($login == "admin") and ($senha == "admin")) {
+                        session_start();
+                        $_SESSION['login'] = "André";
+                        header("location: restrito");
+                      } else {
+                        echo "Login inválido!";
+                      }
+                    }
+                  ?>
                 </div>
             </div>
         </div>
+        <div class="col-3"></div>
     </div>
 
     <!-- JavaScript (Opcional) -->

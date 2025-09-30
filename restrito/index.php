@@ -1,3 +1,4 @@
+<?php include "../validar.php"; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -9,27 +10,22 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css">
 
-    <title>Exclusão de Cadastro</title>
+    <title>Empresa</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" method="POST">
         <div class="row">
-            <?php
-                include "conexao.php";
-
-                $id = $_POST['id'];
-                $nome = $_POST['nome'];
-
-                $sql = "DELETE from `pessoas` WHERE cod_pessoa = $id";
-
-                if(mysqli_query($conn, $sql)) {
-                    mensagem("$nome excluído com sucesso!", 'success');
-                } else {
-                    mensagem("$nome não foi excluído!", 'danger');
-                }
-            ?>
-            <hr>
-            <a href="index.php" class="btn btn-primary">Voltar</a>
+            <div class="col">
+                <div class="jumbotron">
+                    <h1 class="display-4">Cadastro Web</h1>
+                    <p class="lead">Este é um sistema simplificado de cadastros. Base de estudos para a criação de sistemas Web com PHP e MySQL.</p>
+                    <hr class="my-4">
+                    <p>Acesse as funções.</p>
+                    <a class="btn btn-primary btn-lg" href="cadastro.php" role="button">Cadastro</a>
+                    <a class="btn btn-primary btn-lg" href="pesquisa.php" role="button">Pesquisar</a>
+                    <a class="btn btn-danger btn-lg" href="../logout.php" role="button">Sair</a>
+                </div>
+            </div>
         </div>
     </div>
 
