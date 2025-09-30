@@ -21,7 +21,7 @@
                   <form action="index.php" method="POST">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Login</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" name="login">
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu login" name="login">
                       <small name="login" class="form-text text-muted">Entre com seus dados de acesso.</small>
                     </div>
                     <br>
@@ -35,13 +35,27 @@
                   <?php 
                     if(isset($_POST['login'])) {
                       $login = $_POST['login'];
-                      $senha = $_POST['senha'];
-                      if (($login == "admin") and ($senha == "admin")) {
-                        session_start();
-                        $_SESSION['login'] = "André";
-                        header("location: restrito");
+                      $senha = md5($_POST['senha']);
+
+                      include "restrito/conexao.php";
+                      $sql = "SELECT * from `usuarios` WHERE login = '$login' AND senha = '$senha'";
+
+                      if ($result = mysqli_query($conn, $sql)) {
+                        $num_registros = mysqli_num_rows($result);
+                        if($num_registros == 1) {
+                          $linha = mysqli_fetch_assoc($result);
+                          if (($login == $linha['login']) and ($senha == $linha['senha'])) {
+                            session_start();
+                            $_SESSION['login'] = "André";
+                            header("location: restrito");
+                          } else {
+                            echo "Login inválido!";
+                          }
+                        } else {
+                          echo "Login ou senha não encontrados ou inválidos!";
+                        }
                       } else {
-                        echo "Login inválido!";
+                        echo "Nenhum resultado do banco de dados!";
                       }
                     }
                   ?>

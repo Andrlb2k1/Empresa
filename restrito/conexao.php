@@ -1,5 +1,3 @@
-<?php include "../validar.php"; ?>
-
 <?php
 
     $server = "localhost";
